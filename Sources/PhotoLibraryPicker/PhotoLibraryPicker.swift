@@ -1016,9 +1016,11 @@ final class PhotoLibraryPickerViewController: UIViewController {
                 self.alertController?.dismiss(animated: true)
             }
             alert.show()
+            
+        default: break
+            
         }
         
-        default: break
     }
     
     func fetchPhotos(completionHandler: @escaping ([PHAsset]) -> ()) {
