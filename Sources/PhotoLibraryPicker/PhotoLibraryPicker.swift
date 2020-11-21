@@ -1168,6 +1168,17 @@ public struct Picture : Identifiable {
         })
         return Image(uiImage: image)
     }
+    
+    public func toUIImage(width: Int = 100, height: Int = 100, mode: PHImageContentMode = .aspectFit) -> UIImage {
+        let manager = PHImageManager.default()
+        let option = PHImageRequestOptions()
+        var image = UIImage()
+        option.isSynchronous = true
+        manager.requestImage(for: asset, targetSize: CGSize(width: width, height: height), contentMode: mode, options: option, resultHandler: {(result, info)->Void in
+            image = result!
+        })
+        return image
+    }
 }
 
 struct PhotoLibraryPicker_Previews: PreviewProvider {
